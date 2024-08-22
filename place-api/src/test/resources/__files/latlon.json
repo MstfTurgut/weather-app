@@ -1,0 +1,156 @@
+{
+  "documentation": "https://opencagedata.com/api",
+  "licenses": [
+    {
+      "name": "see attribution guide",
+      "url": "https://opencagedata.com/credits"
+    }
+  ],
+  "rate": {
+    "limit": 2500,
+    "remaining": 2459,
+    "reset": 1723507200
+  },
+  "results": [
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "41° 2' 3.43032'' N",
+          "lng": "28° 40' 48.40068'' E"
+        },
+        "MGRS": "35TPF4122943922",
+        "Maidenhead": "KN41ia18of",
+        "Mercator": {
+          "x": 3192655.386,
+          "y": 4989341.708
+        },
+        "NUTS": {
+          "NUTS0": {
+            "code": "TR"
+          },
+          "NUTS1": {
+            "code": "TR1"
+          },
+          "NUTS2": {
+            "code": "TR10"
+          },
+          "NUTS3": {
+            "code": "TR100"
+          }
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?relation=1766102#map=17/41.03429/28.68011",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/41.03429/28.68011&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=41.03429&mlon=28.68011#map=17/41.03429/28.68011"
+        },
+        "UN_M49": {
+          "regions": {
+            "ASIA": "142",
+            "TR": "792",
+            "WESTERN_ASIA": "145",
+            "WORLD": "001"
+          },
+          "statistical_groupings": [
+            "LEDC"
+          ]
+        },
+        "callingcode": 90,
+        "currency": {
+          "alternate_symbols": [
+            "TL"
+          ],
+          "decimal_mark": ",",
+          "html_entity": "&#8378;",
+          "iso_code": "TRY",
+          "iso_numeric": "949",
+          "name": "Turkish Lira",
+          "smallest_denomination": 1,
+          "subunit": "kuruş",
+          "subunit_to_unit": 100,
+          "symbol": "₺",
+          "symbol_first": 1,
+          "thousands_separator": "."
+        },
+        "flag": "🇹🇷",
+        "geohash": "sxk3kwh4p12gxx38gfrg",
+        "qibla": 150.96,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "km/h"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1723432380,
+            "astronomical": 1723426080,
+            "civil": 1723430640,
+            "nautical": 1723428420
+          },
+          "set": {
+            "apparent": 1723482420,
+            "astronomical": 1723488660,
+            "civil": 1723484160,
+            "nautical": 1723486320
+          }
+        },
+        "timezone": {
+          "name": "Europe/Istanbul",
+          "now_in_dst": 0,
+          "offset_sec": 10800,
+          "offset_string": "+0300",
+          "short_name": "+03"
+        },
+        "what3words": {
+          "words": "oğlana.ülke.şefler"
+        },
+        "wikidata": "Q268983"
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 41.0981109,
+          "lng": 28.7018986
+        },
+        "southwest": {
+          "lat": 40.999701,
+          "lng": 28.6205441
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "TR",
+        "ISO_3166-1_alpha-3": "TUR",
+        "ISO_3166-2": [
+          "TR-34"
+        ],
+        "_category": "place",
+        "_normalized_city": "Esenyurt",
+        "_type": "city",
+        "continent": "Europe",
+        "country": "Türkiye",
+        "country_code": "tr",
+        "province": "İstanbul",
+        "region": "Marmara Bölgesi",
+        "state": "İstanbul",
+        "town": "Esenyurt"
+      },
+      "confidence": 7,
+      "formatted": "Esenyurt, İstanbul, Türkiye",
+      "geometry": {
+        "lat": 41.0342862,
+        "lng": 28.6801113
+      }
+    }
+  ],
+  "status": {
+    "code": 200,
+    "message": "OK"
+  },
+  "stay_informed": {
+    "blog": "https://blog.opencagedata.com",
+    "mastodon": "https://en.osm.town/@opencage"
+  },
+  "thanks": "For using an OpenCage API",
+  "timestamp": {
+    "created_http": "Mon, 12 Aug 2024 16:32:58 GMT",
+    "created_unix": 1723480378
+  },
+  "total_results": 1
+}

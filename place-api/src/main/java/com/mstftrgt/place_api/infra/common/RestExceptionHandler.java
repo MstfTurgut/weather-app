@@ -21,4 +21,17 @@ public class RestExceptionHandler {
     protected ErrorResponse handleDistrictNotFoundException(DistrictNotFoundException exception) {
         return new ErrorResponse(exception.getMessage());
     }
+
+    @ResponseStatus(HttpStatus.BAD_GATEWAY)
+    @ExceptionHandler(OpenCageDataUrlCallException.class)
+    protected ErrorResponse handleOpenCageDataUrlCallException(OpenCageDataUrlCallException exception) {
+        return new ErrorResponse(exception.getMessage());
+    }
+
+    @ResponseStatus(HttpStatus.BAD_GATEWAY)
+    @ExceptionHandler(OpenWeatherMapUrlCallException.class)
+    protected ErrorResponse handleOpenWeatherUrlCallException(OpenWeatherMapUrlCallException exception) {
+        return new ErrorResponse(exception.getMessage());
+    }
+
 }

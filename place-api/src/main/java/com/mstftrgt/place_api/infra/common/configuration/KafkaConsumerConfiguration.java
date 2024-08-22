@@ -19,13 +19,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class KafkaConsumerConfiguration<T> {
 
-    @Value("${kafka.host}")
-    private String host;
+    @Value("${spring.kafka.bootstrap-servers}")
+    private String server;
 
     @Bean
     public ConsumerFactory<String, T> consumerFactory() {
         Map<String, Object> config = new HashMap<>();
-        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, host);
+        config.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, server);
         config.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         config.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
         return new DefaultKafkaConsumerFactory<>(config);

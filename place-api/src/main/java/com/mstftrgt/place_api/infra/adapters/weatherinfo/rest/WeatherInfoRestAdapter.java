@@ -1,12 +1,13 @@
 package com.mstftrgt.place_api.infra.adapters.weatherinfo.rest;
 
-import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.JsonPath;
 import com.mstftrgt.place_api.domain.weatherinfo.model.WeatherInfo;
 import com.mstftrgt.place_api.domain.weatherinfo.port.WeatherInfoPort;
+import com.mstftrgt.place_api.infra.adapters.weatherinfo.rest.properties.OpenCageDataProperties;
+import com.mstftrgt.place_api.infra.adapters.weatherinfo.rest.properties.OpenWeatherMapProperties;
+import com.mstftrgt.place_api.infra.common.OpenCageDataUrlCallException;
+import com.mstftrgt.place_api.infra.common.OpenWeatherMapUrlCallException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +21,9 @@ public class WeatherInfoRestAdapter implements WeatherInfoPort {
 
     private final RestTemplate restTemplate;
 
-    @Value("${api.opencagedata.key}")
-    private String openCageDataApiKey;
+    private final OpenCageDataProperties openCageDataProperties;
 
-    @Value("${api.openweathermap.key}")
-    private String openWeatherMapApiKey;
+    private final OpenWeatherMapProperties openWeatherMapProperties;
 
     @Override
     public WeatherInfo retrieveWeatherInfo(String cityName, String districtName) {
@@ -39,36 +38,45 @@ public class WeatherInfoRestAdapter implements WeatherInfoPort {
     }
 
     private LatLonData callOpenCageDataApiToGetLatLonDataFromCityAndDistrictValues(String cityName, String districtName) {
-        String placeToLatLonDataRequestUrl = "https://api.opencagedata.com/geocode/v1/json?q="
-                + cityName + "," + districtName + "&key=" + openCageDataApiKey;
+        String openCageDataUrl = openCageDataProperties.getBaseUrl() + "geocode/v1/json?q=" + cityName + "," + districtName + "&key=" + openCageDataProperties.getKey();
 
-        log.debug("Calling OpenCageData API with URL: {}", placeToLatLonDataRequestUrl);
-        ResponseEntity<String> latLonResponse;
-        try {
-            latLonResponse = restTemplate.exchange(placeToLatLonDataRequestUrl, HttpMethod.GET, new HttpEntity<>(null, null), String.class);
-        } catch (Exception e) {
-            log.error("Error calling OpenCageData API: {}", e.getMessage());
-            throw new RuntimeException("Failed to retrieve latitude and longitude data", e);
-        }
+        log.debug("Calling OpenCageData API with URL: {}", openCageDataUrl);
+        ResponseEntity<String> latLonResponse = callOpenCageDataApi(openCageDataUrl);
         log.debug("Received response from OpenCageData API: {}", latLonResponse.getBody());
 
         return LatLonData.from(latLonResponse.getBody());
     }
 
-    private WeatherData callOpenWeatherMapApiToRetrieveWeatherData(LatLonData latLonData) {
-        String weatherInfoRequestUrl = "https://api.openweathermap.org/data/2.5/weather?lat="
-                + latLonData.getLat() + "&lon=" + latLonData.getLon() + "&appid=" + openWeatherMapApiKey;
-
-        log.debug("Calling OpenWeatherMap API with URL: {}", weatherInfoRequestUrl);
-        ResponseEntity<String> weatherResponse;
+    private ResponseEntity<String> callOpenCageDataApi(String openCageDataUrl) {
+        ResponseEntity<String> latLonResponse;
         try {
-            weatherResponse = restTemplate.exchange(weatherInfoRequestUrl, HttpMethod.GET, new HttpEntity<>(null, null), String.class);
+            latLonResponse = restTemplate.exchange(openCageDataUrl, HttpMethod.GET, new HttpEntity<>(null, null), String.class);
         } catch (Exception e) {
-            log.error("Error calling OpenWeatherMap API: {}", e.getMessage());
-            throw new RuntimeException("Failed to retrieve weather data", e);
+            throw new OpenCageDataUrlCallException();
         }
+        return latLonResponse;
+    }
+
+    private WeatherData callOpenWeatherMapApiToRetrieveWeatherData(LatLonData latLonData) {
+        String openWeatherMapUrl = openWeatherMapProperties.getBaseUrl() +
+                "/data/2.5/weather?lat=" + latLonData.getLat() +
+                "&lon=" + latLonData.getLon() +
+                "&appid=" + openWeatherMapProperties.getKey();
+
+        log.debug("Calling OpenWeatherMap API with URL: {}", openWeatherMapUrl);
+        ResponseEntity<String> weatherResponse = callOpenWeatherMapApi(openWeatherMapUrl);
         log.debug("Received response from OpenWeatherMap API: {}", weatherResponse.getBody());
 
         return WeatherData.from(weatherResponse.getBody());
+    }
+
+    private ResponseEntity<String> callOpenWeatherMapApi(String openWeatherMapUrl) {
+        ResponseEntity<String> weatherResponse;
+        try {
+            weatherResponse = restTemplate.exchange(openWeatherMapUrl, HttpMethod.GET, new HttpEntity<>(null, null), String.class);
+        } catch (Exception e) {
+            throw new OpenWeatherMapUrlCallException();
+        }
+        return weatherResponse;
     }
 }

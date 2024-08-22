@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.support.KafkaHeaders;
+import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.GenericMessage;
 import org.springframework.stereotype.Service;
 
@@ -26,10 +27,11 @@ public class UserSavedEventAdapter implements UserSavedEventPort {
     public void publish(UserSavedEvent userSavedEvent) {
         Map<String, Object> headers = Map.of(
                 KafkaHeaders.TOPIC, TOPIC_NAME,
-                KafkaHeaders.KEY, userSavedEvent.getId().toString()
+                KafkaHeaders.KEY, userSavedEvent.getId().toString(),
+                "contentType", "application/json"
         );
 
         log.info("Sending userSavedEvent : {}", userSavedEvent);
-        kafkaTemplate.send(new GenericMessage<>(userSavedEvent, headers));
+        kafkaTemplate.send(new GenericMessage<>(userSavedEvent, new MessageHeaders(headers)));
     }
 }

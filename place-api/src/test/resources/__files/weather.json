@@ -1,0 +1,45 @@
+{
+  "coord": {
+    "lon": 28.6801,
+    "lat": 41.0343
+  },
+  "weather": [
+    {
+      "id": 800,
+      "main": "Clear",
+      "description": "clear sky",
+      "icon": "01d"
+    }
+  ],
+  "base": "stations",
+  "main": {
+    "temp": 301.53,
+    "feels_like": 302.14,
+    "temp_min": 301.53,
+    "temp_max": 301.53,
+    "pressure": 1012,
+    "humidity": 51,
+    "sea_level": 1012,
+    "grnd_level": 1007
+  },
+  "visibility": 10000,
+  "wind": {
+    "speed": 8.23,
+    "deg": 40
+  },
+  "clouds": {
+    "all": 0
+  },
+  "dt": 1723480486,
+  "sys": {
+    "type": 1,
+    "id": 6970,
+    "country": "TR",
+    "sunrise": 1723432335,
+    "sunset": 1723482509
+  },
+  "timezone": 10800,
+  "id": 747323,
+  "name": "Esenyurt",
+  "cod": 200
+}

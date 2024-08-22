@@ -1,0 +1,283 @@
+{
+  "documentation": "https://opencagedata.com/api",
+  "licenses": [
+    {
+      "name": "see attribution guide",
+      "url": "https://opencagedata.com/credits"
+    }
+  ],
+  "rate": {
+    "limit": 2500,
+    "remaining": 2454,
+    "reset": 1723507200
+  },
+  "results": [
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "41° 2' 15.42300'' N",
+          "lng": "28° 52' 56.82684'' E"
+        },
+        "MGRS": "35TPF5823144639",
+        "Maidenhead": "KN41ka59va",
+        "Mercator": {
+          "x": 3215179.838,
+          "y": 4989831.464
+        },
+        "NUTS": {
+          "NUTS0": {
+            "code": "TR"
+          },
+          "NUTS1": {
+            "code": "TR1"
+          },
+          "NUTS2": {
+            "code": "TR10"
+          },
+          "NUTS3": {
+            "code": "TR100"
+          }
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?relation=1766101#map=17/41.03762/28.88245",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/41.03762/28.88245&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=41.03762&mlon=28.88245#map=17/41.03762/28.88245"
+        },
+        "UN_M49": {
+          "regions": {
+            "ASIA": "142",
+            "TR": "792",
+            "WESTERN_ASIA": "145",
+            "WORLD": "001"
+          },
+          "statistical_groupings": [
+            "LEDC"
+          ]
+        },
+        "callingcode": 90,
+        "currency": {
+          "alternate_symbols": [
+            "TL"
+          ],
+          "decimal_mark": ",",
+          "html_entity": "&#8378;",
+          "iso_code": "TRY",
+          "iso_numeric": "949",
+          "name": "Turkish Lira",
+          "smallest_denomination": 1,
+          "subunit": "kuruş",
+          "subunit_to_unit": 100,
+          "symbol": "₺",
+          "symbol_first": 1,
+          "thousands_separator": "."
+        },
+        "flag": "🇹🇷",
+        "geohash": "sxk93nxt3ym5dqd6y7qg",
+        "qibla": 151.43,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "km/h"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1723432380,
+            "astronomical": 1723426020,
+            "civil": 1723430580,
+            "nautical": 1723428360
+          },
+          "set": {
+            "apparent": 1723482360,
+            "astronomical": 1723488660,
+            "civil": 1723484100,
+            "nautical": 1723486260
+          }
+        },
+        "timezone": {
+          "name": "Europe/Istanbul",
+          "now_in_dst": 0,
+          "offset_sec": 10800,
+          "offset_string": "+0300",
+          "short_name": "+03"
+        },
+        "what3words": {
+          "words": "fırıncı.prensip.şiirler"
+        },
+        "wikidata": "Q378714"
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 41.1079173,
+          "lng": 28.9006289
+        },
+        "southwest": {
+          "lat": 41.0173263,
+          "lng": 28.8337984
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "TR",
+        "ISO_3166-1_alpha-3": "TUR",
+        "ISO_3166-2": [
+          "TR-34"
+        ],
+        "_category": "place",
+        "_normalized_city": "Esenler",
+        "_type": "city",
+        "continent": "Europe",
+        "country": "Türkiye",
+        "country_code": "tr",
+        "province": "İstanbul",
+        "region": "Marmara Bölgesi",
+        "state": "İstanbul",
+        "town": "Esenler"
+      },
+      "confidence": 7,
+      "formatted": "Esenler, İstanbul, Türkiye",
+      "geometry": {
+        "lat": 41.0376175,
+        "lng": 28.8824519
+      }
+    },
+    {
+      "annotations": {
+        "DMS": {
+          "lat": "40° 53' 6.71532'' N",
+          "lng": "29° 16' 21.71388'' E"
+        },
+        "MGRS": "35TPF9147528499",
+        "Maidenhead": "KN40pv22rk",
+        "Mercator": {
+          "x": 3258621.869,
+          "y": 4967448.881
+        },
+        "NUTS": {
+          "NUTS0": {
+            "code": "TR"
+          },
+          "NUTS1": {
+            "code": "TR1"
+          },
+          "NUTS2": {
+            "code": "TR10"
+          },
+          "NUTS3": {
+            "code": "TR100"
+          }
+        },
+        "OSM": {
+          "edit_url": "https://www.openstreetmap.org/edit?relation=9219466#map=17/40.88520/29.27270",
+          "note_url": "https://www.openstreetmap.org/note/new#map=17/40.88520/29.27270&layers=N",
+          "url": "https://www.openstreetmap.org/?mlat=40.88520&mlon=29.27270#map=17/40.88520/29.27270"
+        },
+        "UN_M49": {
+          "regions": {
+            "ASIA": "142",
+            "TR": "792",
+            "WESTERN_ASIA": "145",
+            "WORLD": "001"
+          },
+          "statistical_groupings": [
+            "LEDC"
+          ]
+        },
+        "callingcode": 90,
+        "currency": {
+          "alternate_symbols": [
+            "TL"
+          ],
+          "decimal_mark": ",",
+          "html_entity": "&#8378;",
+          "iso_code": "TRY",
+          "iso_numeric": "949",
+          "name": "Turkish Lira",
+          "smallest_denomination": 1,
+          "subunit": "kuruş",
+          "subunit_to_unit": 100,
+          "symbol": "₺",
+          "symbol_first": 1,
+          "thousands_separator": "."
+        },
+        "flag": "🇹🇷",
+        "geohash": "sxkbd4gtx33yhhu21eby",
+        "qibla": 152.16,
+        "roadinfo": {
+          "drive_on": "right",
+          "speed_in": "km/h"
+        },
+        "sun": {
+          "rise": {
+            "apparent": 1723432260,
+            "astronomical": 1723425960,
+            "civil": 1723430520,
+            "nautical": 1723428300
+          },
+          "set": {
+            "apparent": 1723482240,
+            "astronomical": 1723488480,
+            "civil": 1723483980,
+            "nautical": 1723486140
+          }
+        },
+        "timezone": {
+          "name": "Europe/Istanbul",
+          "now_in_dst": 0,
+          "offset_sec": 10800,
+          "offset_string": "+0300",
+          "short_name": "+03"
+        },
+        "what3words": {
+          "words": "jimnastik.arpalar.araçsız"
+        },
+        "wikidata": "Q6074426"
+      },
+      "bounds": {
+        "northeast": {
+          "lat": 40.8955848,
+          "lng": 29.2781058
+        },
+        "southwest": {
+          "lat": 40.878625,
+          "lng": 29.2628245
+        }
+      },
+      "components": {
+        "ISO_3166-1_alpha-2": "TR",
+        "ISO_3166-1_alpha-3": "TUR",
+        "ISO_3166-2": [
+          "TR-34"
+        ],
+        "_category": "place",
+        "_normalized_city": "Pendik",
+        "_type": "neighbourhood",
+        "continent": "Asia",
+        "country": "Türkiye",
+        "country_code": "tr",
+        "province": "İstanbul",
+        "region": "Marmara Bölgesi",
+        "state": "İstanbul",
+        "suburb": "Esenler Mahallesi",
+        "town": "Pendik"
+      },
+      "confidence": 8,
+      "formatted": "Esenler Mahallesi, Pendik, İstanbul, Türkiye",
+      "geometry": {
+        "lat": 40.8851987,
+        "lng": 29.2726983
+      }
+    }
+  ],
+  "status": {
+    "code": 200,
+    "message": "OK"
+  },
+  "stay_informed": {
+    "blog": "https://blog.opencagedata.com",
+    "mastodon": "https://en.osm.town/@opencage"
+  },
+  "thanks": "For using an OpenCage API",
+  "timestamp": {
+    "created_http": "Mon, 12 Aug 2024 17:57:13 GMT",
+    "created_unix": 1723485433
+  },
+  "total_results": 2
+}
