@@ -4,7 +4,7 @@ import com.mstftrgt.place_api.domain.district.model.District;
 import com.mstftrgt.place_api.domain.district.port.DistrictPort;
 import com.mstftrgt.place_api.infra.adapters.district.jpa.entity.DistrictEntity;
 import com.mstftrgt.place_api.infra.adapters.district.jpa.repository.DistrictRepository;
-import com.mstftrgt.place_api.infra.common.DistrictNotFoundException;
+import com.mstftrgt.place_api.infra.common.exception.DistrictNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

@@ -8,6 +8,6 @@ import lombok.Data;
 public class Place {
 
     private Long id;
-    private Long weatherId;
     private Long userId;
+    private Long weatherId;
 }

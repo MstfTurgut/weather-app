@@ -16,7 +16,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-@Sql(scripts = "classpath:sql/cleanup.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+@Sql(scripts = "classpath:sql/user_data.sql", executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
 @Sql(scripts = "classpath:sql/cleanup.sql", executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
 public class UserDataAdapterIT{
 
@@ -33,5 +33,16 @@ public class UserDataAdapterIT{
         Optional<UserEntity> userEntity = userRepository.findById(savedUser.getId());
         assertThat(userEntity).isPresent();
         assertThat(userEntity.get().toModel()).isEqualTo(savedUser);
+    }
+
+    @Test
+    void should_retrieve_user() {
+        User user = userDataAdapter.retrieveByFirstNameAndLastName("firstName", "lastName");
+
+        assertThat(user).isNotNull();
+        assertThat(user)
+                .returns(999L, User::getId)
+                .returns("firstName", User::getFirstName)
+                .returns("lastName", User::getLastName);
     }
 }

@@ -6,4 +6,5 @@ public interface UserPort {
 
     User save(String firstName, String lastName);
 
+    User retrieveByFirstNameAndLastName(String firstName, String lastName);
 }

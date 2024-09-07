@@ -1,6 +1,10 @@
 package com.mstftrgt.place_api.integration;
 
+import com.mstftrgt.place_api.domain.place.model.PlaceDetailed;
+import com.mstftrgt.place_api.domain.weatherinfo.model.WeatherInfo;
+import com.mstftrgt.place_api.infra.adapters.place.rest.dto.AllPlacesDetailedResponse;
 import com.mstftrgt.place_api.infra.adapters.place.rest.dto.NewPlaceRequest;
+import com.mstftrgt.place_api.infra.adapters.place.rest.dto.PlaceDetailedResponse;
 import com.mstftrgt.place_api.infra.adapters.place.rest.dto.PlaceResponse;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +43,35 @@ public class PlaceControllerIT {
                 .returns(1L, PlaceResponse::getId)
                 .returns(1L, PlaceResponse::getWeatherId)
                 .returns(1L, PlaceResponse::getUserId);
+    }
+
+    @Test
+    void should_retrieve_all_places() {
+        long userId = 1L;
+
+        var responseEntity = testRestTemplate
+                .exchange("/places/" + userId, HttpMethod.GET, null, AllPlacesDetailedResponse.class);
+
+        assertThat(responseEntity).isNotNull()
+                .returns(HttpStatus.OK, from(ResponseEntity::getStatusCode));
+
+        AllPlacesDetailedResponse response = responseEntity.getBody();
+        assertThat(response.getPlaceDetailedResponseList().size()).isEqualTo(1);
+        assertThat(response.getUserId()).isEqualTo(userId);
+
+        WeatherInfo weatherInfo = WeatherInfo.builder()
+                .main("main")
+                .temp(1.0)
+                .feelsLike(1.0)
+                .humidity(1)
+                .build();
+
+        assertThat(response.getPlaceDetailedResponseList().get(0))
+                .returns(1L, PlaceDetailedResponse::getId)
+                .returns(1L, PlaceDetailedResponse::getWeatherId)
+                .returns(1L, PlaceDetailedResponse::getCityId)
+                .returns(1L, PlaceDetailedResponse::getDistrictId)
+                .returns(weatherInfo, PlaceDetailedResponse::getWeatherInfo);
+
     }
 }

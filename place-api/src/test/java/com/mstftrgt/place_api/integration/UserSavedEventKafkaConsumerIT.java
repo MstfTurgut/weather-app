@@ -7,7 +7,6 @@ import com.mstftrgt.place_api.domain.place.usecase.PlaceSave;
 import com.mstftrgt.place_api.infra.adapters.place.event.UserSavedEvent;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.context.SpringBootTest;
 
 

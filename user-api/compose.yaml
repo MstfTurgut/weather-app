@@ -43,7 +43,10 @@ services:
       - KAFKA_CLUSTERS_0_NAME=local
       - KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS=kafka:9093
       - KAFKA_CLUSTERS_0_ZOOKEEPER=localhost:2181
-
+  redis:
+    image: "redis:alpine"
+    ports:
+      - "6379:6379"
 volumes:
   zookeeper_data:
     driver: local

@@ -2,8 +2,8 @@ package com.mstftrgt.place_api.integration;
 
 import com.mstftrgt.place_api.domain.weatherinfo.model.WeatherInfo;
 import com.mstftrgt.place_api.infra.adapters.weatherinfo.rest.WeatherInfoRestAdapter;
-import com.mstftrgt.place_api.infra.common.OpenCageDataUrlCallException;
-import com.mstftrgt.place_api.infra.common.OpenWeatherMapUrlCallException;
+import com.mstftrgt.place_api.infra.common.exception.OpenCageDataUrlCallException;
+import com.mstftrgt.place_api.infra.common.exception.OpenWeatherMapUrlCallException;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -66,7 +66,7 @@ public class WeatherInfoRestAdapterIT {
 
         assertThatExceptionOfType(OpenCageDataUrlCallException.class)
                 .isThrownBy(() -> weatherInfoRestAdapter.retrieveWeatherInfo("Istanbul", "failOpenCageData"))
-                .withMessage("Failed to retrieve latitude and longitude data.");
+                .withMessage("Failed to retrieve latitude and Longitude data.");
     }
 
     @Test

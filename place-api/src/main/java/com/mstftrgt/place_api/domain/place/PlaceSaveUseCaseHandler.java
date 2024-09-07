@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -40,14 +42,14 @@ public class PlaceSaveUseCaseHandler implements UseCaseHandler<Place, PlaceSave>
     }
 
     private Weather retrieveWeatherIfExistsOrElseSaveAndReturn(PlaceSave useCase, City city, District district) {
-        Weather weather = weatherPort.retrieve(city.getId(), district.getId());
+        Optional<Weather> weather = weatherPort.retrieveByCityAndDistrict(city.getId(), district.getId());
 
-        if (weather == null) {
+        if (weather.isEmpty()) {
             log.info("No existing weather record found for {}/{}, saving new weather record.", district.getTitle(), city.getTitle());
             return saveNewWeatherAndReturn(useCase, city.getId(), district.getId());
         } else {
             log.info("Weather record found for {}/{}, using existing weather record.", district.getTitle(), city.getTitle());
-            return weather;
+            return weather.get();
         }
     }
 

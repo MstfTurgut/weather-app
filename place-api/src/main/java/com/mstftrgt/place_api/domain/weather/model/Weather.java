@@ -4,9 +4,11 @@ import com.mstftrgt.place_api.domain.weatherinfo.model.WeatherInfo;
 import lombok.Builder;
 import lombok.Data;
 
+import java.io.Serializable;
+
 @Data
 @Builder
-public class Weather {
+public class Weather implements Serializable {
 
     private Long id;
     private Long cityId;

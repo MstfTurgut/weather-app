@@ -45,8 +45,8 @@ public class WeatherDataAdapterIT {
 
     @Test
     void should_retrieve_weather() {
-        Weather weather = weatherDataAdapter.retrieve(1L, 1L);
-        assertThat(weather).isNotNull()
+        Optional<Weather> weather = weatherDataAdapter.retrieveByCityAndDistrict(1L, 1L);
+        assertThat(weather.get()).isNotNull()
                 .returns(1L, Weather::getId)
                 .returns("testMain", w -> w.getWeatherInfo().getMain())
                 .returns(1, w -> w.getWeatherInfo().getHumidity())

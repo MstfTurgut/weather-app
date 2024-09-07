@@ -3,11 +3,8 @@ package com.mstftrgt.place_api.common.usecase;
 import com.mstftrgt.place_api.domain.common.usecase.UseCaseHandler;
 import com.mstftrgt.place_api.domain.place.model.Place;
 import com.mstftrgt.place_api.domain.place.usecase.PlaceSave;
-import com.mstftrgt.place_api.infra.common.CityNotFoundException;
-import com.mstftrgt.place_api.infra.common.DistrictNotFoundException;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 

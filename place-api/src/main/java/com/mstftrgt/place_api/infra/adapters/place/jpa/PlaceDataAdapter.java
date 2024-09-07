@@ -7,6 +7,8 @@ import com.mstftrgt.place_api.infra.adapters.place.jpa.repository.PlaceRepositor
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class PlaceDataAdapter implements PlacePort {
@@ -21,5 +23,10 @@ public class PlaceDataAdapter implements PlacePort {
                 .build();
 
         return placeRepository.save(placeEntity).toModel();
+    }
+
+    @Override
+    public List<Place> retrieveAll(Long userId) {
+        return placeRepository.findAllByUserId(userId).stream().map(PlaceEntity::toModel).toList();
     }
 }

@@ -6,9 +6,11 @@ import com.mstftrgt.place_api.domain.weatherinfo.model.WeatherInfo;
 import com.mstftrgt.place_api.infra.adapters.weather.jpa.entity.WeatherEntity;
 import com.mstftrgt.place_api.infra.adapters.weather.jpa.repository.WeatherRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,9 +36,15 @@ public class WeatherDataAdapter implements WeatherPort {
     }
 
     @Override
-    public Weather retrieve(Long cityId, Long districtId) {
-        WeatherEntity weatherEntity = weatherRepository.findByCityIdAndDistrictId(cityId, districtId);
-        return weatherEntity == null ? null : weatherEntity.toModel();
+    public Optional<Weather> retrieveByCityAndDistrict(Long cityId, Long districtId) {
+        Optional<WeatherEntity> weatherEntity = weatherRepository.findByCityIdAndDistrictId(cityId, districtId);
+        return weatherEntity.map(WeatherEntity::toModel);
+    }
+
+    @Override
+    @Cacheable("weatherCache")
+    public Weather retrieveById(Long weatherId) {
+        return weatherRepository.findById(weatherId).orElseThrow().toModel();
     }
 
     @Override

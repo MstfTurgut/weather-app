@@ -22,17 +22,30 @@ public class UserControllerIT {
 
     @Test
     void should_save_user() {
-
         UserSaveRequest userSaveRequest = UserSaveRequest.builder()
                 .firstName("testFirstName")
                 .lastName("testLastName")
                 .build();
 
         var responseEntity = testRestTemplate
-                .exchange("/users/save", HttpMethod.POST, new HttpEntity<>(userSaveRequest, null), UserResponse.class);
+                .exchange("/users", HttpMethod.POST, new HttpEntity<>(userSaveRequest, null), UserResponse.class);
 
         assertThat(responseEntity).isNotNull()
                 .returns(HttpStatus.CREATED, from(ResponseEntity::getStatusCode));
+
+        assertThat(responseEntity.getBody()).isNotNull()
+                .returns(1L, UserResponse::getId)
+                .returns("testFirstName", UserResponse::getFirstName)
+                .returns("testLastName", UserResponse::getLastName);
+    }
+
+    @Test
+    void should_retrieve_user() {
+        var responseEntity = testRestTemplate
+                .exchange("/users?firstName=testFirstName&lastName=testLastName", HttpMethod.GET, null, UserResponse.class);
+
+        assertThat(responseEntity).isNotNull()
+                .returns(HttpStatus.OK, from(ResponseEntity::getStatusCode));
 
         assertThat(responseEntity.getBody()).isNotNull()
                 .returns(1L, UserResponse::getId)

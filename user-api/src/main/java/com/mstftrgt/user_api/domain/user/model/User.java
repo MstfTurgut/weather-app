@@ -6,10 +6,12 @@ import lombok.Data;
 import org.apache.kafka.common.protocol.types.Field;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.io.Serializable;
+
 @Data
 @Builder
 @AllArgsConstructor
-public class User {
+public class User implements Serializable {
 
     private Long id;
     private String firstName;

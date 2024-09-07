@@ -4,11 +4,9 @@ import com.mstftrgt.place_api.domain.city.model.City;
 import com.mstftrgt.place_api.domain.city.port.CityPort;
 import com.mstftrgt.place_api.infra.adapters.city.jpa.entity.CityEntity;
 import com.mstftrgt.place_api.infra.adapters.city.jpa.repository.CityRepository;
-import com.mstftrgt.place_api.infra.common.CityNotFoundException;
+import com.mstftrgt.place_api.infra.common.exception.CityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

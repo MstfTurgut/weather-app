@@ -1,4 +1,4 @@
-package com.mstftrgt.place_api.infra.common;
+package com.mstftrgt.place_api.infra.common.exception;
 
 public class DistrictNotFoundException extends RuntimeException {
 

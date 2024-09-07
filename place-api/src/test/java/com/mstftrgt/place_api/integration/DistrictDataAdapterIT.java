@@ -2,7 +2,8 @@ package com.mstftrgt.place_api.integration;
 
 import com.mstftrgt.place_api.domain.district.model.District;
 import com.mstftrgt.place_api.infra.adapters.district.jpa.DistrictDataAdapter;
-import com.mstftrgt.place_api.infra.common.DistrictNotFoundException;
+import com.mstftrgt.place_api.infra.common.exception.DistrictNotFoundException;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -15,6 +16,7 @@ public class DistrictDataAdapterIT {
     @Autowired
     DistrictDataAdapter districtDataAdapter;
 
+    @Test
     void should_retrieve_district_by_cityId_and_title() {
         District district = districtDataAdapter.retrieve(34L, "Esenyurt");
         assertThat(district).isNotNull()
@@ -23,12 +25,14 @@ public class DistrictDataAdapterIT {
                 .returns(34L, District::getCityId);
     }
 
+    @Test
     void should_fail_retrieve_district_by_cityId_and_title() {
         assertThatExceptionOfType(DistrictNotFoundException.class)
                 .isThrownBy(() -> districtDataAdapter.retrieve(99L, "Esenyurt"))
                 .withMessage("District not found");
     }
 
+    @Test
     void should_retrieve_district_by_id() {
         District district = districtDataAdapter.retrieveById(433L);
         assertThat(district).isNotNull()
@@ -37,6 +41,7 @@ public class DistrictDataAdapterIT {
                 .returns(34L, District::getCityId);
     }
 
+    @Test
     void should_fail_retrieve_district_by_id() {
         assertThatExceptionOfType(DistrictNotFoundException.class)
                 .isThrownBy(() -> districtDataAdapter.retrieveById(9999L))
